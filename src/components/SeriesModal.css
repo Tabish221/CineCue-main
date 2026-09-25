@@ -1,0 +1,647 @@
+/* Series Modal Styles - Netflix Design */
+.series-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.series-modal {
+  background: #181818;
+  border-radius: 12px;
+  max-width: 1000px;
+  max-height: 90vh;
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.series-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s;
+}
+
+.series-modal-close:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.series-modal-content {
+  background: #181818;
+  border-radius: 12px;
+  max-width: 1000px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Header with poster and info side by side */
+.series-modal-header {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
+.series-modal-poster {
+  flex-shrink: 0;
+}
+
+.series-modal-poster img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.series-modal-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.series-modal-body {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.series-modal-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.series-modal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.series-modal-description {
+  color: #e5e5e5;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.series-modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.series-modal-play-btn {
+  background: white;
+  color: black;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.series-modal-play-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.series-modal-list-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  width: 40px;
+  height: 40px;
+}
+
+.series-modal-list-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+.series-modal-list-btn.in-list {
+  background: transparent;
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.series-modal-episodes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.series-modal-episodes-title h2 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+}
+
+.series-modal-season-description {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.series-modal-season-selector {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.series-modal-season-dropdown {
+  background: #1a1a1a;
+  color: white;
+  border: 1px solid #333;
+  padding: 0.875rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  min-width: 180px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.series-modal-season-dropdown:hover {
+  background: #333;
+  border-color: #555;
+}
+
+.series-modal-season-dropdown .rotated {
+  transform: rotate(180deg);
+}
+
+.series-modal-season-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  z-index: 10;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  min-width: 220px;
+}
+
+.series-modal-season-option {
+  padding: 1rem 1.25rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #333;
+}
+
+.series-modal-season-option:last-child {
+  border-bottom: none;
+}
+
+.series-modal-season-option:hover {
+  background: #333;
+}
+
+.series-modal-season-option.active {
+  background: #e50914;
+  color: white;
+}
+
+.series-modal-seasons,
+.series-modal-latest,
+.series-modal-episodes-count {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.series-modal-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.series-play-button {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.series-play-button:hover {
+  background: #f40612;
+}
+
+.series-list-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.series-list-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.series-list-button.in-list {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+/* Episodes Section */
+.episodes-section {
+  margin-bottom: 2rem;
+}
+
+.episodes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.episodes-header h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.season-dropdown {
+  position: relative;
+}
+
+.season-dropdown-btn {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.season-dropdown-btn:hover {
+  background: #333;
+  border-color: #555;
+}
+
+.season-dropdown-btn .rotated {
+  transform: rotate(180deg);
+}
+
+.season-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 100;
+  min-width: 250px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+  background: #444;
+}
+
+.dropdown-item.active {
+  background: #e50914;
+}
+
+.season-info {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Episodes Grid - Netflix Style */
+.series-modal-episodes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.series-modal-episode {
+  background: #2a2a2a;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  min-height: 90px;
+  margin-bottom: 8px;
+}
+
+.series-modal-episode:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.series-modal-episode-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  padding: 0 15px;
+  color: #e5e5e5;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.series-modal-episode-thumbnail {
+  position: relative;
+  width: 140px;
+  height: 90px;
+  flex-shrink: 0;
+  background: #333;
+}
+
+.series-modal-episode-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.series-modal-episode-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 1;
+  z-index: 2;
+}
+
+.series-modal-episode:hover .series-modal-episode-play {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.9);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.series-modal-episode-play:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: white;
+}
+
+.series-modal-episode-info {
+  padding: 0.75rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.series-modal-episode-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.series-modal-episode-description {
+  color: #ccc;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.series-modal-episode-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.series-modal-episode-runtime,
+.series-modal-episode-date,
+.series-modal-episode-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.series-modal-episode-rating {
+  color: #fbbf24;
+}
+
+.series-modal-episode-title {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+}
+
+.series-modal-episode-description {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0.5rem 0 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.series-modal-episodes-info {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 1.5rem;
+  border-radius: 24px;
+  font-size: 1.1rem;
+  color: #fff;
+  display: inline-block;
+  margin: 0 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .series-modal-overlay {
+    padding: 0;
+  }
+
+  .series-modal-content {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 8px;
+  }
+
+  .series-modal-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .series-modal-poster img {
+    width: 100px;
+    height: 150px;
+  }
+
+  .series-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .series-modal-meta {
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .series-modal-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .series-modal-play-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .series-modal-list-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .series-modal-body {
+    padding: 0 1rem 1rem;
+  }
+
+  .series-modal-episodes-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .series-modal-season-selector {
+    align-self: stretch;
+  }
+
+  .series-modal-season-dropdown {
+    width: 100%;
+  }
+
+  .series-modal-episode {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .series-modal-episode-thumbnail {
+    width: 100%;
+    height: 150px;
+  }
+
+  .series-modal-episode-info {
+    padding: 0.8rem;
+  }
+
+  .series-modal-episode-number {
+    display: none;
+  }
+}

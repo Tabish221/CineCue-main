@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Enhanced Favicon Suite -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="%PUBLIC_URL%/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%PUBLIC_URL%/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="%PUBLIC_URL%/favicon-16x16.png"
+    />
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+
+    <!-- Viewport & Performance -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#0f0f0f" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- SEO & Social Media Meta Tags -->
+    <meta
+      name="description"
+      content="CineCue - Your ultimate Netflix-style streaming companion. Discover, organize, and enjoy your favorite movies and TV series with an elegant, modern interface."
+    />
+    <meta
+      name="keywords"
+      content="movies, tv shows, streaming, netflix, entertainment, cinema, series, films, media player"
+    />
+    <meta name="author" content="CineCue Team" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cinecue.me/" />
+    <meta
+      property="og:title"
+      content="CineCue - Netflix-Style Streaming Experience"
+    />
+    <meta
+      property="og:description"
+      content="Your ultimate streaming companion with a sleek Netflix-inspired interface for movies and TV series."
+    />
+    <meta
+      property="og:image"
+      content="%PUBLIC_URL%/android-chrome-512x512.png"
+    />
+    <meta property="og:site_name" content="CineCue" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://cinecue.me/" />
+    <meta
+      name="twitter:title"
+      content="CineCue - Netflix-Style Streaming Experience"
+    />
+    <meta
+      name="twitter:description"
+      content="Your ultimate streaming companion with a sleek Netflix-inspired interface for movies and TV series."
+    />
+    <meta
+      name="twitter:image"
+      content="%PUBLIC_URL%/android-chrome-512x512.png"
+    />
+    <meta name="twitter:creator" content="@CineCue" />
+
+    <!-- Performance & Security -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- Preconnect to External Domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://drive.google.com" />
+    <link rel="preconnect" href="https://api.themoviedb.org" />
+
+    <!-- Google Fonts - Netflix-Style Typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Netflix+Sans:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Additional Optimizations -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//api.themoviedb.org" />
+
+    <!-- PWA Features -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="CineCue" />
+    <meta name="application-name" content="CineCue" />
+    <meta name="msapplication-TileColor" content="#0f0f0f" />
+    <meta
+      name="msapplication-config"
+      content="%PUBLIC_URL%/browserconfig.xml"
+    />
+
+    <!-- Netflix-Style Loading CSS -->
+    <style>
+      /* Critical loading styles */
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #141414;
+        color: #ffffff;
+        font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial,
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+
+      #root {
+        min-height: 100vh;
+        background: #141414;
+      }
+
+      /* Universal Streaming Platform Loading Animation */
+      .loading-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.8s ease-out;
+        overflow: hidden;
+      }
+
+      .streaming-loader {
+        position: relative;
+        width: 80px;
+        height: 80px;
+      }
+
+      .spinner-ring {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 3px solid transparent;
+        border-radius: 50%;
+        animation: streamingSpin 1.5s linear infinite;
+      }
+
+      .spinner-ring:nth-child(1) {
+        border-top: 3px solid #ffffff;
+        animation-delay: 0s;
+      }
+
+      .spinner-ring:nth-child(2) {
+        border-right: 3px solid rgba(255, 255, 255, 0.6);
+        animation-delay: -0.5s;
+        width: 60px;
+        height: 60px;
+        top: 10px;
+        left: 10px;
+      }
+
+      .spinner-ring:nth-child(3) {
+        border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+        animation-delay: -1s;
+        width: 40px;
+        height: 40px;
+        top: 20px;
+        left: 20px;
+      }
+
+      /* Universal streaming animation */
+      @keyframes streamingSpin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Netflix-style scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #141414;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #333333;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555555;
+      }
+    </style>
+
+    <title>CineCue - Stream Movies & Shows</title>
+  </head>
+  <body>
+    <!-- Netflix-Style Loading Screen -->
+    <div id="loading-screen" class="loading-container">
+      <div class="streaming-loader">
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+      </div>
+    </div>
+
+    <!-- Fallback for users with JavaScript disabled -->
+    <noscript>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          text-align: center;
+          padding: 2rem;
+          background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+          color: white;
+          font-family: 'Inter', sans-serif;
+        "
+      >
+        <h1
+          style="
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #e50914, #ff6b6b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          "
+        >
+          CineCue
+        </h1>
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; opacity: 0.9">
+          JavaScript Required
+        </h2>
+        <p
+          style="
+            font-size: 1.1rem;
+            opacity: 0.7;
+            max-width: 600px;
+            line-height: 1.6;
+          "
+        >
+          CineCue requires JavaScript to deliver the best streaming experience.
+          Please enable JavaScript in your browser settings and refresh the page
+          to continue.
+        </p>
+        <div
+          style="
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: rgba(229, 9, 20, 0.1);
+            border: 1px solid #e50914;
+            border-radius: 8px;
+          "
+        >
+          <strong>Why JavaScript?</strong> CineCue uses modern web technologies
+          to provide a smooth, Netflix-like interface for browsing and streaming
+          your media collection.
+        </div>
+      </div>
+    </noscript>
+
+    <!-- Main Application Container -->
+    <div id="root"></div>
+
+    <!-- Netflix Loading Script -->
+    <script>
+      // Netflix-style loading sequence
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          const loadingScreen = document.getElementById("loading-screen");
+          if (loadingScreen) {
+            loadingScreen.style.opacity = "0";
+            setTimeout(function () {
+              loadingScreen.style.display = "none";
+            }, 600);
+          }
+        }, 1500); // Netflix-style minimum loading time
+      });
+
+      // Performance monitoring with Netflix-style logging
+      if ("performance" in window) {
+        window.addEventListener("load", function () {
+          setTimeout(function () {
+            const perfData = performance.getEntriesByType("navigation")[0];
+            console.log("🎬 CineCue Performance:", {
+              loadTime:
+                Math.round(perfData.loadEventEnd - perfData.fetchStart) + "ms",
+              domReady:
+                Math.round(
+                  perfData.domContentLoadedEventEnd - perfData.fetchStart
+                ) + "ms",
+            });
+          }, 0);
+        });
+      }
+
+      // Theme detection and optimization
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        document.documentElement.style.setProperty("--theme-bg", "#0f0f0f");
+      }
+
+      // Service Worker registration for PWA features (if available)
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then(function (registration) {
+              console.log("🎬 CineCue SW registered:", registration.scope);
+            })
+            .catch(function (error) {
+              console.log("🎬 CineCue SW registration failed:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
